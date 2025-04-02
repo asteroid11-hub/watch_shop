@@ -11,7 +11,7 @@ export default function RouterProvider() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const signupHandler = async (formData) => {
-    const res = await axiosInstance.post('/auth/signup', formData);
+    const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
   };
   const loginHandler = async (formData) => {
@@ -27,8 +27,11 @@ export default function RouterProvider() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />}></Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
+        <Route
+          path="/register"
+          element={<RegistrationPage signupHandler={signupHandler} />}
+        />
       </Route>
     </Routes>
   );

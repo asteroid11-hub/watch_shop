@@ -2,13 +2,39 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function RegisterForm() {
+function RegisterForm({ signupHandler }) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const user = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+    try {
+      await signupHandler(user);
+      alert('Регистрация успешна!');
+    } catch (error) {
+      console.error(error);
+      alert('Ошибка регистрации');
+    }
+  }
+
   return (
-    <Form className="p-4 border rounded" style={{ maxWidth: '400px', margin: '0 auto' }}>
+    <Form
+      className="p-4 border rounded"
+      style={{ maxWidth: '400px', margin: '0 auto' }}
+      onSubmit={handleSubmit}
+    >
       <h2 className="text-center mb-4">Регистрация</h2>
 
+      <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Control name="name" type="name" placeholder="Введите имя" required />
+        <Form.Text className="text-muted">Ваше имя</Form.Text>
+      </Form.Group>
+
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="Enter email" required />
+        <Form.Control name="email" type="email" placeholder="Enter email" required />
         <Form.Text className="text-muted">
           Ваш email будет использоваться для входа в аккаунт.
         </Form.Text>
@@ -16,6 +42,7 @@ function RegisterForm() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Control
+          name="password"
           type="password"
           placeholder="Password"
           required
@@ -28,11 +55,17 @@ function RegisterForm() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formConfirmPassword">
-        <Form.Control type="password" placeholder="Confirm Password" required />
+        <Form.Control
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          required
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formSecretKey">
         <Form.Control
+          name="secretKey"
           type="password"
           placeholder="Enter your secret key"
           required
@@ -41,7 +74,6 @@ function RegisterForm() {
         <Form.Text id="secretKeyHelpBlock" muted></Form.Text>
       </Form.Group>
 
-      {/* Terms Checkbox */}
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check
           type="checkbox"
@@ -50,7 +82,6 @@ function RegisterForm() {
         />
       </Form.Group>
 
-      {/* Submit Button */}
       <Button variant="primary" type="submit" className="w-100">
         Register
       </Button>

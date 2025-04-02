@@ -5,6 +5,7 @@ import LoginPage from '../components/pages/LoginPage';
 import RegistrationPage from '../components/pages/RegistrationPage';
 import { useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
+import CardPage from '../components/pages/CardPage';
 
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ export default function RouterProvider() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />}></Route>
+        <Route path="/1" element={<CardPage />}></Route>
         <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
         <Route
           path="/register"

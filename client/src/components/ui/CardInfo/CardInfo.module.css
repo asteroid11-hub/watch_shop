@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 87vh;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 70vh;
+  border: 1px solid green;
+  border-radius: 15px;
+  background-color: bisque;
+}
+
+.boxLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+
+.boxImage {
+  display: flex;
+  width: 80%;
+  height: 50vh;
+  border: 1px solid green;
+  border-radius: 20px;
+}
+
+img {
+  display: flex;
+  width: 100%;
+  height: 50vh;
+  border-radius: 20px;
+}
+
+.boxRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  position: relative;
+}
+
+.oneCardBtn {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(31, 24, 114);
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+
+  position: absolute;
+  right: 40%;
+  bottom: 13%;
+}
+
+.boxRigtTop {
+  display: flex;
+  height: 40%;
+  padding-top: 80px;
+}
+
+.boxRightBottom {
+  display: flex;
+  height: 60%;
+  padding-right: 30px;
+}

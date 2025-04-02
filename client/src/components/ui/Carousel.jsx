@@ -26,7 +26,7 @@ function CarouselFadeExample() {
           <img src={watch.image} style={{height:'90vh'}}/>
           <Carousel.Caption>
             <h3>{watch.model}</h3>
-            <p>{watch.description}</p>
+            <p>{watch.description}fwfwfww</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}

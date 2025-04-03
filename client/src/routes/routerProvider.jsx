@@ -65,7 +65,7 @@ export default function RouterProvider() {
 
   return (
     <Routes>
-    <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>}>
+    <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>}></Route>
         <Route path="/" element={<MainPage isLoggedIn={isLoggedIn}/>}></Route>
 
       <Route element={<Layout />}>

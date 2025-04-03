@@ -12,10 +12,10 @@ class WatchService {
         return watch;
     }
 
-    // static async createWatch(model, description, image) {
-    //     const watch = await Watch.create({ model, description, image });
-    //     return watch;
-    // }
+    static async createWatch(model, description, image) {
+        const watch = await Watch.create({ model, description, image });
+        return watch;
+    }
 
     static async updateWatch(id, model, description, image) {
         const watch = await Watch.findByPk(id);

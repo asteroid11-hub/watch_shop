@@ -13,10 +13,17 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
 
+
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads/watch', express.static(path.join(__dirname, 'uploads', "watch")));
+
 app.use('/uploads/feedback', express.static(path.join(__dirname, 'uploads/feedback')));
+
 
 app.use('/api', authRouter);
 app.use('/api/watch', watchRouter);
 app.use('/api/feedback', feedbackRouter);
+
 
 module.exports = app;

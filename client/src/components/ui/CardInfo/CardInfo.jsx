@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CardInfo.module.css';
+import { Link } from 'react-router';
 
 export default function CardInfo({ watch }) {
   return (
@@ -7,7 +8,6 @@ export default function CardInfo({ watch }) {
       <div className={styles.box}>
         <div className={styles.boxLeft}>
           <div className={styles.boxImage}>
-            {/* {watch.image} */}
             <img src={watch.image} alt="" />
           </div>
         </div>
@@ -18,7 +18,10 @@ export default function CardInfo({ watch }) {
           </div>
           <div className={styles.boxRightBottom}>
             <h3>{watch.description}</h3>
-            <button className={styles.oneCardBtn}>Buy</button>
+
+            <Link to="/" className={styles.oneCard}>
+              Связаться
+            </Link>
           </div>
         </div>
       </div>

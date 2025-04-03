@@ -16,13 +16,15 @@ function CarouselFadeExample({ isLoggedIn }) {
     watchService.getAllWatch().then((res) => setWatch(res));
   }, []);
 
+
   const newWatch = {
     model: 'Test model',
     description: 'Test description',
     image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
   };
 
-  // console.log(watches);
+
+
 
 
 

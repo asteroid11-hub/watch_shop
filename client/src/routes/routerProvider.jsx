@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router';
+import { Link, Navigate, Route, Routes } from 'react-router';
 import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
@@ -6,10 +6,13 @@ import RegistrationPage from '../components/pages/RegistrationPage';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';
+import AdminPage from '../components/pages/AdminPage';
 
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
 
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
@@ -38,18 +41,31 @@ export default function RouterProvider() {
       });
     console.log(user);
     console.log(isLoggedIn);
-  }, [isLoggedIn]);
+  }, []);
 
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/:id" element={<CardPage />}></Route>
-        <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/admin" />
+            ) : (
+              <LoginPage loginHandler={loginHandler} />
+            )
+          }
+        />
         <Route
           path="/register"
           element={<RegistrationPage signupHandler={signupHandler} />}
         />
+        <Route
+          path="/admin"
+          element={isLoggedIn ? <AdminPage /> : <Navigate to="/login" />}
+        ></Route>
       </Route>
     </Routes>
   );

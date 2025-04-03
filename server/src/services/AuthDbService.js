@@ -20,6 +20,16 @@ class AuthDbService {
       throw new Error('Failed to fetch user');
     }
   }
+
+  static async getsecretKey(email) {
+    try {
+      const user = await Admin.findOne({ where: { email } });
+      return user.secretKey;
+    } catch (error) {
+      console.log('Error fetching secret key:', error);
+      throw new Error('Failed to fetch secret key');
+    }
+  }
 }
 
 module.exports = AuthDbService;

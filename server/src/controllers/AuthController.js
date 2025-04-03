@@ -9,7 +9,7 @@ class AuthController {
   static async authenticateUser(req, res) {
     try {
       const { email, password } = req.body;
-      const user = (await AuthDbService.getUserByEmail(email)).get({ plain: true });
+      const user = (await AuthDbService.getUserByEmail(email))?.get({ plain: true });
       console.log(user.password);
       console.log(password);
 
@@ -26,6 +26,8 @@ class AuthController {
         .cookie('refreshToken', refreshToken, cookieConfig)
         .json({ user, accessToken });
     } catch (error) {
+      console.log(error);
+
       return res.status(500).json({ error, message: 'Ошибка при проверке пользователя' });
     }
   }
@@ -91,6 +93,9 @@ class AuthController {
       return res.status(401).json({ error, message: 'Неверный токен' });
     }
   }
+
+  
+  
 }
 
 module.exports = AuthController;

@@ -87,4 +87,6 @@ class WatchService {
   }
 }
 
-export default WatchService;
+const watchService=new WatchService()
+
+export default watchService;

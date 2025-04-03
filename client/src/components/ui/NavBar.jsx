@@ -1,13 +1,14 @@
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBar() {
+function NavBar({isLoggedIn,logoutHandler}) {
   return (
     <Navbar expand="lg" bg="dark" variant="dark" className="py-3 shadow-sm">
       <Container>
         <Navbar.Brand href="#home" className="d-flex align-items-center">
-          <span className="text-white fw-bold fs-4 me-2">WATCH</span>
+          <span className="text-white fw-bold fs-4 me-2">AETERNIS</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0">
@@ -28,6 +29,11 @@ function NavBar() {
             >
               Связаться с нами
             </Nav.Link>
+            {isLoggedIn&&
+            <Button variant="secondary" onClick={logoutHandler}>
+              Выход
+            </Button>
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>

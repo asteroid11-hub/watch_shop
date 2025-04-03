@@ -30,6 +30,26 @@ export default function RouterProvider() {
     setUser(null);
   };
 
+  const feedbackHandler = async (formData) => {
+    const data = new FormData();
+    data.append('email', formData.email);
+    data.append('name', formData.name);
+    data.append('message', formData.message);
+    if (formData.file) {
+      data.append('file', formData.file);
+    }
+
+    try {
+      const response = await axiosInstance.post('/feedback', data);
+      if (response.status === 200) {
+        alert('Форма успешно отправлена!');
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert('Ошибка при отправке формы');
+    }
+  };
+
   useEffect(() => {
     axiosInstance('/auth/refresh')
       .then((res) => setUser(res.data.user))
@@ -46,7 +66,7 @@ export default function RouterProvider() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/" element={<MainPage feedbackHandler={feedbackHandler} />}></Route>
         <Route path="/:id" element={<CardPage />}></Route>
         <Route
           path="/login"

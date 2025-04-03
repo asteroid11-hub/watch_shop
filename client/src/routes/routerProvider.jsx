@@ -12,8 +12,6 @@ export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
@@ -84,7 +82,13 @@ export default function RouterProvider() {
         />
         <Route
           path="/admin"
-          element={isLoggedIn ? <AdminPage /> : <Navigate to="/login" />}
+          element={
+            isLoggedIn ? (
+              <AdminPage user={user} setUser={setUser} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         ></Route>
       </Route>
     </Routes>

@@ -74,7 +74,7 @@ class AuthController {
       return res
         .status(200)
         .cookie('refreshToken', newRefreshToken, cookieConfig)
-        .json({ accessToken });
+        .json({ accessToken, user });
     } catch (error) {
       return res.status(401).json({ error, message: 'Неверный токен' });
     }
@@ -93,9 +93,6 @@ class AuthController {
       return res.status(401).json({ error, message: 'Неверный токен' });
     }
   }
-
-  
-  
 }
 
 module.exports = AuthController;

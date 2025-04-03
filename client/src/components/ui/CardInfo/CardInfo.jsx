@@ -8,7 +8,7 @@ export default function CardInfo({ watch }) {
         <div className={styles.boxLeft}>
           <div className={styles.boxImage}>
             {/* {watch.image} */}
-            <img src="https://kluch.media/upload/iblock/8ac/u8hirwd00lp9xbstzqqolic1zvolzjne/768x500mobil.jpg" alt="" />
+            <img src={watch.image} alt="" />
           </div>
         </div>
 

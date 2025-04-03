@@ -29,21 +29,21 @@ class WatchController {
     }
   }
 
-  static async createWatch(req, res) {
-    try {
-      const { model, description, image } = req.body;
-      if (!model || !description || !image) {
-        return res.status(400).json({ error: 'Не все поля заполнены' });
-      }
-      const newWatch = await WatchService.createWatch(model, description, image);
-      res.status(201).json(newWatch);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({
-        error: 'Ошибка со стороны сервера при создание данных в таблицу Watch',
-      });
-    }
-  }
+  // static async createWatch(req, res) {
+  //   try {
+  //     const { model, description, image } = req.body;
+  //     if (!model || !description || !image) {
+  //       return res.status(400).json({ error: 'Не все поля заполнены' });
+  //     }
+  //     const newWatch = await WatchService.createWatch(model, description, image);
+  //     res.status(201).json(newWatch);
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).json({
+  //       error: 'Ошибка со стороны сервера при создание данных в таблицу Watch',
+  //     });
+  //   }
+  // }
 
   static async updateWatch(req, res) {
     try {

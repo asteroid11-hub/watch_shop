@@ -6,6 +6,7 @@ import RegistrationPage from '../components/pages/RegistrationPage';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';
+import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch';
 
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
@@ -44,7 +45,8 @@ export default function RouterProvider() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />}></Route>
-        <Route path="/:id" element={<CardPage />}></Route>
+        <Route path="/watch/:id" element={<CardPage />}></Route>
+        <Route path="/addwatch" element={<AddNewWatch />}></Route>
         <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
         <Route
           path="/register"

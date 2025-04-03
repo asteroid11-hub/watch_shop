@@ -77,6 +77,20 @@ class AuthController {
       return res.status(401).json({ error, message: 'Неверный токен' });
     }
   }
+
+  static async logout(req, res) {
+    try {
+      const { refreshToken } = req.cookies;
+      if (!refreshToken) {
+        return res.status(401).json({ message: 'Нет токена для выхода' });
+      }
+      jwt.verify(refreshToken, process.env.REFRESH_SECRET_KEY);
+      res.clearCookie('refreshToken');
+      return res.status(200).json({ message: 'Выход выполнен успешно' });
+    } catch (error) {
+      return res.status(401).json({ error, message: 'Неверный токен' });
+    }
+  }
 }
 
 module.exports = AuthController;

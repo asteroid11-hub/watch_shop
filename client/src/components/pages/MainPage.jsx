@@ -6,11 +6,15 @@ import WatchScene from '../ui/animation';
 
 export default function MainPage() {
   return (
-    <div style={{ backgroundColor: 'black', height: '100vh' }}>
-      <CarouselFadeExample />;
-      <About />
-      <Feedback />
-      <WatchScene />
+    <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+      <CarouselFadeExample />
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Feedback />
+      </div>
     </div>
   );
 }
+

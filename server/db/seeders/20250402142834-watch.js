@@ -41,17 +41,17 @@ module.exports = {
       {
         model: 'Rolex Submariner',
         description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: 'url_to_image_1.jpg',
+        image: 'https://w.wallhaven.cc/full/nm/wallhaven-nm66rk.jpg',
       },
       {
         model: 'Omega Seamaster',
         description: 'Стильные и надежные часы для активного отдыха.',
-        image: 'url_to_image_2.jpg',
+        image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
       },
       {
         model: 'Tag Heuer Carrera',
         description: 'Спортивные часы с хронографом для гонщиков.',
-        image: 'url_to_image_3.jpg',
+        image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
       },
     ]);
   },

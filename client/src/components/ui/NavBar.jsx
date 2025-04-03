@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 function NavBar({isLoggedIn,logoutHandler}) {
+  console.log('dbdgdsggzgzhHH');
+  
   return (
     <Navbar expand="lg" bg="dark" variant="dark" className="py-3 shadow-sm">
       <Container>

@@ -2,6 +2,7 @@ import React from 'react';
 import CarouselFadeExample from '../ui/Carousel';
 import About from '../ui/About';
 import Feedback from '../ui/Feedback';
+import WatchScene from '../ui/animation';
 
 export default function MainPage() {
   return (
@@ -9,6 +10,7 @@ export default function MainPage() {
       <CarouselFadeExample />;
       <About />
       <Feedback />
+      <WatchScene />
     </div>
   );
 }

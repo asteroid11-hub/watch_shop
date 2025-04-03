@@ -44,7 +44,7 @@ export default function RouterProvider() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />}></Route>
-        <Route path="/1" element={<CardPage />}></Route>
+        <Route path="/:id" element={<CardPage />}></Route>
         <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
         <Route
           path="/register"

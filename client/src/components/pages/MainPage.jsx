@@ -5,10 +5,15 @@ import Feedback from '../ui/Feedback';
 
 export default function MainPage() {
   return (
-    <div style={{ backgroundColor: 'black', height: '100vh' }}>
-      <CarouselFadeExample />;
-      <About />
-      <Feedback />
+    <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+      <CarouselFadeExample />
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Feedback />
+      </div>
     </div>
   );
 }
+

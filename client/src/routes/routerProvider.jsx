@@ -10,12 +10,9 @@ import CardPage from '../components/pages/CardPage';
 import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch';
 import AdminPage from '../components/pages/AdminPage';
 
-
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
 
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
@@ -69,10 +66,9 @@ export default function RouterProvider() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/" element={<MainPage feedbackHandler={feedbackHandler} />}></Route>
         <Route path="/watch/:id" element={<CardPage />}></Route>
         <Route path="/addwatch" element={<AddNewWatch />}></Route>
-        <Route path="/" element={<MainPage feedbackHandler={feedbackHandler} />}></Route>
         <Route
           path="/login"
           element={

@@ -18,22 +18,28 @@ module.exports = {
 
     await Feedback.bulkCreate([
       {
-        name: 'Иван Иванов',
-        number: '+7 (123) 456-78-90',
         email: 'ivan.ivanov@example.com',
-        comment: 'Отличный сервис!',
+        name: 'Иван Иванов',
+        message: 'Отличный сервис!',
+        filePath: 'uploads/file1.jpg', // Пример пути к файлу
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
-        name: 'Мария Петрова',
-        number: '+7 (987) 654-32-10',
         email: 'maria.petrova@example.com',
-        comment: 'Все очень понравилось!',
+        name: 'Мария Петрова',
+        message: 'Все очень понравилось!',
+        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
-        name: 'Алексей Смирнов',
-        number: '+7 (555) 123-45-67',
         email: 'alexey.smirnov@example.com',
-        comment: 'Рекомендую всем!',
+        name: 'Алексей Смирнов',
+        message: 'Рекомендую всем!',
+        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
 

@@ -10,7 +10,7 @@ export default function CardPage() {
   
 
   useEffect(() => {
-    axiosinstance.get(`/watch/1`).then((res) => {
+    axiosinstance.get(`/watch/${id}`).then((res) => {
       setWatch(res.data);
     });
   }, []);

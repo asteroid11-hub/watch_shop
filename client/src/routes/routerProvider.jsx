@@ -59,16 +59,22 @@ export default function RouterProvider() {
         setIsLoggedIn(false);
         console.log(error.message);
       });
-    console.log(user);
-    console.log(isLoggedIn);
   }, []);
 
   return (
     <Routes>
       <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
-      <Route path="/" element={<MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler}/>}>
-        <Route path="/watch/:id" element={<CardPage />}></Route>
-        <Route path="/addwatch" element={<AddNewWatch />}></Route>
+        {/* Главная страница - отдельный маршрут */}
+        <Route
+          path="/"
+          element={<MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler} />}
+        />
+
+        {/* Остальные маршруты */}
+        <Route path="/watch/:id" element={<CardPage />} />
+        <Route path="/addwatch" element={<AddNewWatch />} />
+
+        {/* Авторизация */}
         <Route
           path="/login"
           element={
@@ -83,7 +89,8 @@ export default function RouterProvider() {
           path="/register"
           element={<RegistrationPage signupHandler={signupHandler} />}
         />
-        </Route>
+
+        {/* Админка */}
         <Route
           path="/admin"
           element={
@@ -93,7 +100,7 @@ export default function RouterProvider() {
               <Navigate to="/login" />
             )
           }
-        ></Route>
+        />
       </Route>
     </Routes>
   );

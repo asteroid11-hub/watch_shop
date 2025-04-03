@@ -68,11 +68,14 @@ export default function RouterProvider() {
 
   return (
     <Routes>
+    <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>}>
+        <Route path="/" element={<MainPage isLoggedIn={isLoggedIn}/>}></Route>
+
       <Route element={<Layout />}>
-        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/" element={<MainPage feedbackHandler={feedbackHandler} />}></Route>
         <Route path="/watch/:id" element={<CardPage />}></Route>
         <Route path="/addwatch" element={<AddNewWatch />}></Route>
-        <Route path="/" element={<MainPage feedbackHandler={feedbackHandler} />}></Route>
+        
         <Route
           path="/login"
           element={

@@ -4,7 +4,7 @@ import About from '../ui/About';
 import Feedback from '../ui/Feedback';
 import WatchScene from '../ui/animation';
 
-export default function MainPage() {
+export default function MainPage({ feedbackHandler }) {
   return (
     <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
       <CarouselFadeExample />
@@ -12,9 +12,8 @@ export default function MainPage() {
         <About />
       </div>
       <div id="contact">
-        <Feedback />
+        <Feedback feedbackHandler={feedbackHandler} />
       </div>
     </div>
   );
 }
-

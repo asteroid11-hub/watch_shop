@@ -13,8 +13,6 @@ function CarouselFadeExample() {
       .then((res) => setWatch(res.data));
   }, []);
 
-  console.log(watches);
-
   return (
     <Carousel
       fade

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import RouterProvider from './routes/routerProvider';
 import { BrowserRouter } from 'react-router';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);

@@ -3,5 +3,8 @@ const router = express.Router();
 const AdminController = require('../controllers/AdminController');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
+router.post('/secretkey', verifyAccessToken, AdminController.secretToken);
+router.post('/aidescription', verifyAccessToken, AdminController.aiDescription);
+router.get('/getcsv', verifyAccessToken, AdminController.getCSV);
 
-router.get('/admin/secretKey', verifyAccessToken, AdminController.secretKey);
+module.exports = router;

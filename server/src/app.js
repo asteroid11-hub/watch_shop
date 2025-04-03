@@ -6,6 +6,7 @@ const path = require('path');
 const authRouter = require('./routes/authRouter');
 const watchRouter = require('./routes/watchRouter');
 const feedbackRouter = require('./routes/feedbackRouter');
+const adminRouter = require('./routes/adminRouter'); // Добавленный маршрут для администратора
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/uploads/feedback', express.static(path.join(__dirname, 'uploads/feedba
 app.use('/api', authRouter);
 app.use('/api/watch', watchRouter);
 app.use('/api/feedback', feedbackRouter);
+app.use('/api/admin', adminRouter); // Добавленный маршрут для администратора
 
 
 module.exports = app;

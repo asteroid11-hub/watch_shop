@@ -86,7 +86,13 @@ export default function RouterProvider() {
         </Route>
         <Route
           path="/admin"
-          element={isLoggedIn ? <AdminPage /> : <Navigate to="/login" />}
+          element={
+            isLoggedIn ? (
+              <AdminPage user={user} setUser={setUser} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         ></Route>
       </Route>
     </Routes>

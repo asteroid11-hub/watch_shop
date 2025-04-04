@@ -1,4 +1,3 @@
-const sendEmail = require('../services/EmailAnswerService');
 const FeedBackService = require('../services/FeedbackService');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/feedback/' });
@@ -22,14 +21,8 @@ class FeedbackController {
       const filePath = req.file ? `/uploads/feedback/${req.file.filename}` : null;
 
       await FeedBackService.createFeedback(email, name, message, filePath);
-      await sendEmail(
-        email,
-        'Ваше сообщение получено',
-        'Наш менеджер свяжется с вами в ближайшее время!',
-      );
-      res
-        .status(200)
-        .json({ message: 'Форма успешно отправлена' })
+
+      res.status(200).json({ message: 'Форма успешно отправлена' });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Ошибка при создании данных' });

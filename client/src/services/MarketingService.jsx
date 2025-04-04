@@ -69,8 +69,8 @@ class MarketingService {
   async update(id,updateAdvert) {
     try {
       const response = await axiosInstance.put(`/marketing/${id}`, updateAdvert);
-      if (response.status !== 200)
-        throw new Error('Неверный статус при обновлении (ожидался 200)');
+      // if (response.status !== 200)
+      //   throw new Error('Неверный статус при обновлении (ожидался 200)');
       return response.data;
     } catch (error) {
       this.#handleError(error);

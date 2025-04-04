@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
 import RegistrationPage from '../components/pages/RegistrationPage';
+import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch'
 import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';

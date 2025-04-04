@@ -4,7 +4,7 @@ import About from '../ui/About';
 import Feedback from '../ui/Feedback';
 import AllWatchesCard from '../ui/CardAllWatch/AllWatchesCard';
 
-export default function MainPage({isLoggedIn,logoutHandler, feedbackHandler}) {
+export default function MainPage({isLoggedIn, logoutHandler, feedbackHandler}) {
 
   return (
     <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>

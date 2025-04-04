@@ -9,7 +9,10 @@ const Layout = ({ isLoggedIn, logoutHandler }) => {
         <NavBar isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />
       </header>
       <Outlet />
+
       <footer></footer>
+
+
     </div>
   );
 };

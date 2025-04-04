@@ -6,7 +6,11 @@ class WatchController {
   static async getAll(req, res) {
     try {
       const watches = await WatchService.getAll();
-      res.json(watches);
+      const watchesWithFullImagePath = watches.map((watch) => ({
+        ...watch.get({ plain: true }),
+        image: watch.image ? `/uploads/watch/${watch.image}` : null,
+      }));
+      res.json(watchesWithFullImagePath);
     } catch (error) {
       console.error(error);
       res.status(500).json({

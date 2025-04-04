@@ -19,7 +19,7 @@ const watchRouter = express.Router();
 watchRouter
   .route('/')
   .get(WatchController.getAll)
-  .post(verifyAccessToken, upload.single('file'), WatchController.createWatch);
+  .post(upload.single('file'), WatchController.createWatch);
 
 watchRouter
   .route('/:id')

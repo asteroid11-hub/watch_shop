@@ -1,4 +1,4 @@
-import { Link, Navigate, Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router';
 import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
@@ -6,9 +6,6 @@ import RegistrationPage from '../components/pages/RegistrationPage';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';
-
-import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch';
-import AdminPage from '../components/pages/AdminPage';
 
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
@@ -30,26 +27,6 @@ export default function RouterProvider() {
     setUser(null);
   };
 
-  const feedbackHandler = async (formData) => {
-    const data = new FormData();
-    data.append('email', formData.email);
-    data.append('name', formData.name);
-    data.append('message', formData.message);
-    if (formData.file) {
-      data.append('file', formData.file);
-    }
-
-    try {
-      const response = await axiosInstance.post('/feedback', data);
-      if (response.status === 200) {
-        alert('Форма успешно отправлена!');
-      }
-    } catch (error) {
-      console.error('Ошибка:', error);
-      alert('Ошибка при отправке формы');
-    }
-  };
-
   useEffect(() => {
     axiosInstance('/auth/refresh')
       .then((res) => setUser(res.data.user))
@@ -61,33 +38,18 @@ export default function RouterProvider() {
       });
     console.log(user);
     console.log(isLoggedIn);
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <Routes>
-      <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
-      <Route path="/" element={<MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler}/>}>
+    <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>}>
+        <Route path="/" element={<MainPage isLoggedIn={isLoggedIn}/>}></Route>
         <Route path="/watch/:id" element={<CardPage />}></Route>
-        <Route path="/addwatch" element={<AddNewWatch />}></Route>
-        <Route
-          path="/login"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/admin" />
-            ) : (
-              <LoginPage loginHandler={loginHandler} />
-            )
-          }
-        />
+        <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
         <Route
           path="/register"
           element={<RegistrationPage signupHandler={signupHandler} />}
         />
-        </Route>
-        <Route
-          path="/admin"
-          element={isLoggedIn ? <AdminPage /> : <Navigate to="/login" />}
-        ></Route>
       </Route>
     </Routes>
   );

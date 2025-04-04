@@ -5,6 +5,6 @@ const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
 router.post('/secretkey', verifyAccessToken, AdminController.secretToken);
 router.post('/aidescription', verifyAccessToken, AdminController.aiDescription);
-router.get('/getcsv', verifyAccessToken, AdminController.getCSV);
+router.get('/getcsv', AdminController.getCSV);
 
 module.exports = router;

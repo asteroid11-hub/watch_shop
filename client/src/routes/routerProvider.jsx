@@ -1,4 +1,4 @@
-import { Link, Navigate, Route, Routes } from 'react-router';
+import { Link, Navigate, Route, Routes, useNavigate } from 'react-router';
 import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
@@ -14,20 +14,25 @@ export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const navigate = useNavigate();
+
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
+    navigate('/admin');
     console.log(res.data.user);
   };
   const loginHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/login', formData);
     if (res.status === 200) setUser(res.data.user);
+    navigate('/admin');
     console.log(res.data.user);
     console.log(user);
   };
   const logoutHandler = async () => {
     await axiosInstance.delete('/auth/logout');
     setUser(null);
+    navigate('/login');
   };
 
   const feedbackHandler = async (formData) => {
@@ -87,7 +92,13 @@ export default function RouterProvider() {
         />
         <Route
           path="/register"
-          element={<RegistrationPage signupHandler={signupHandler} />}
+          element={
+            isLoggedIn ? (
+              <Navigate to="/admin" />
+            ) : (
+              <RegistrationPage signupHandler={signupHandler} />
+            )
+          }
         />
 
         {/* Админка */}

@@ -1,9 +1,5 @@
-const generateTokens = require('../utils/generateTokens');
-const cookieConfig = require('../config/cookieConfig');
 require('dotenv').config();
 const AuthDbService = require('../services/AuthDbService');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const AIService = require('../services/AIService');
 const arrayToCsv = require('../utils/csvConvert');
 
@@ -11,8 +7,11 @@ class AdminController {
   static async secretToken(req, res) {
     try {
       console.log(req.body);
+      console.log(req.body.user.email);
 
-      const user = await AuthDbService.getUserByEmail(req.body.email);
+      const user = await AuthDbService.getUserByEmail(req.body.user.email);
+      console.log(user);
+
       if (!user) return res.status(401).json({ error: 'Invalid email' });
 
       console.log(user);
@@ -44,7 +43,7 @@ class AdminController {
     try {
       const csvData = await AuthDbService.getAllFeedbacks();
       console.log(csvData);
-      const fileName = await arrayToCsv(csvData);
+      const fileName = arrayToCsv(csvData);
       console.log(fileName);
 
       res.download(`${fileName}`, 'feedback.csv', (err) => {

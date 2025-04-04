@@ -17,10 +17,9 @@ const upload = multer({ storage });
 marketingRouter
   .route('/')
   .get(MarketingController.getAll)
-  .post(upload.single('image'), MarketingController.create)
- 
+  .post(upload.single('image'), MarketingController.create);
 
-  marketingRouter
+marketingRouter
   .route('/:id')
   .get(MarketingController.getOne)
   .put(upload.single('image'), MarketingController.update)

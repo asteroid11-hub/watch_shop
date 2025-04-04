@@ -14,17 +14,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-
-
 watchRouter
   .route('/')
   .get(WatchController.getAll)
-  .post(upload.single('file'), WatchController.createWatch);
+  .post(verifyAccessToken, upload.single('file'), WatchController.createWatch);
 
 watchRouter
   .route('/:id')
   .get(WatchController.getOneWatch)
-  .put(verifyAccessToken, WatchController.updateWatch)
+  .put(verifyAccessToken, upload.single('file'), WatchController.updateWatch)
   .delete(verifyAccessToken, WatchController.deleteWatch);
 
 module.exports = watchRouter;

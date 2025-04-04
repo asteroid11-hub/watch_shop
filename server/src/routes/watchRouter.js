@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const WatchController = require('../controllers/WatchController');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
+const watchRouter = express.Router();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -11,10 +12,9 @@ const storage = multer.diskStorage({
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
-
 const upload = multer({ storage });
 
-const watchRouter = express.Router();
+
 
 watchRouter
   .route('/')

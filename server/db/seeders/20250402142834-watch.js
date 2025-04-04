@@ -47,39 +47,42 @@ module.exports = {
       {
         model: 'Rolex Submariner',
         description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
+        image: '1.jpg',
       },
       {
         model: 'Omega Seamaster',
         description: 'Стильные и надежные часы для активного отдыха.',
-        image: '/uploads/watch/123-wallhaven.jpg',
+        image: '2.jpg',
+      },
+      {
+        model: 'Tag Heuer Carrera',
+        description: 'Спортивные часы с хронографом для гонщиков.',
+        image: '3.jpg',
       },
       {
         model: 'Patek Philippe Nautilus',
-        description:
-          'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
-        image: '/uploads/watch/patex_philippe.jpg',
+        description: 'Роскошные часы с уникальным дизайном в форме porthole.',
+        image: '4.jpg',
       },
       {
         model: 'Audemars Piguet Royal Oak',
-        description: 'Классические часы с уникальным восьмиугольным безелем.',
-        image: '/uploads/watch/Lookbook_video_code_v2.mp4',
+        description: 'Легендарные часы с узнаваемым октагональным bezel.',
+        image: '5.jpg',
       },
       {
-        model: 'Rolex Submariner',
-        description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
+        model: 'Breitling Navitimer',
+        description: 'Культовые авиационные часы со встроенным flight computer.',
+        image: '6.jpg',
       },
       {
-        model: 'Omega Seamaster',
-        description: 'Стильные и надежные часы для активного отдыха.',
-        image: '/uploads/watch/123-wallhaven.jpg',
+        model: 'Jaeger-LeCoultre Reverso',
+        description: 'Элегантные часы с переворачивающимся корпусом.',
+        image: '7.jpg',
       },
       {
-        model: 'Patek Philippe Nautilus',
-        description:
-          'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
-        image: '/uploads/watch/patex_philippe.jpg',
+        model: 'IWC Portugieser',
+        description: 'Классические морские хронометры с чистым дизайном.',
+        image: '8.jpg',
       },
     ]);
 

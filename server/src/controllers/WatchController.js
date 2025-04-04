@@ -38,7 +38,7 @@ class WatchController {
   static async createWatch(req, res) {
     try {
       const { model, description } = req.body;
-      const image = req.file ? `/uploads/watch/${req.file.filename}` : null;
+      const image = req.file ? `${req.file.filename}` : null;
 
       if (!model || !description || !image) {
         return res.status(400).json({ error: 'Не все поля заполнены' });

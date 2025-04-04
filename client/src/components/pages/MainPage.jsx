@@ -10,7 +10,7 @@ export default function MainPage({ isLoggedIn, logoutHandler, feedbackHandler })
       <CarouselFadeExample isLoggedIn={isLoggedIn} />
 
       <div id="allWatchesCard">
-        <AllWatchesCard />
+        <AllWatchesCard isLoggedIn={isLoggedIn} />
       </div>
 
       <div id="about">

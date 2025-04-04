@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, Button, Card, Nav, ListGroup } from 'react-bootstrap';
 import axiosInstance from '../../../config/axiosInstance';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import styles from './AllWatchesCard.module.css';
 
-export default function AllWatchesCard() {
+export default function AllWatchesCard({ isLoggedIn }) {
   const [watches, setWatches] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosInstance
@@ -21,6 +23,18 @@ export default function AllWatchesCard() {
     return grouped;
   };
 
+  const deleteHandler = (e, watchId) => {
+    e.preventDefault();
+    axiosInstance
+      .delete(`/watch/${watchId}`)
+      .then((res) => {
+        setWatches(watches.filter((watch) => watch.id !== watchId));
+      })
+      .catch((error) => {
+        console.error('Ошибка при удалении данных:', error);
+      });
+  };
+
   const groupedWatches = groupWatches(watches);
 
   return (
@@ -29,9 +43,43 @@ export default function AllWatchesCard() {
         <Carousel.Item key={index}>
           <div className="d-flex justify-content-around">
             {group.map((watch) => (
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: '18rem' }} className={styles.container}>
                 <Card.Img variant="top" src={watch.image} />
-
+                {isLoggedIn && (
+                  <div className={styles.boxCRUD}>
+                    <div
+                      style={{
+                        top: '20px',
+                        right: '250px',
+                        zIndex: '1001',
+                        display: 'flex',
+                        gap: '10px',
+                      }}
+                    >
+                      <Button
+                        variant="light"
+                        className="d-flex align-items-cente"
+                        onClick={() => navigate('/addwatch')}
+                      >
+                        <i className="bi bi-plus-lg"></i>
+                      </Button>
+                      <Button
+                        variant="light"
+                        className="d-flex align-items-cente"
+                        onClick={() => navigate('/editwatch')}
+                      >
+                        <i className="bi bi-pencil-square"></i>
+                      </Button>
+                      <Button
+                        variant="light"
+                        className="d-flex align-items-cente"
+                        onClick={(e) => deleteHandler(e, watch.id)}
+                      >
+                        <i className="bi bi-trash"></i>
+                      </Button>
+                    </div>
+                  </div>
+                )}
                 <Card.Body>
                   <Card.Title>{watch.model}</Card.Title>
 

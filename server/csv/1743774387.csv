@@ -1,4 +1,0 @@
-"id","email","name","message","filePath","createdAt","updatedAt"
-1,"ivan.ivanov@example.com","Иван Иванов","Отличный сервис!","uploads/feedback/file1.jpg","2025-04-04T13:36:39.385Z","2025-04-04T13:36:39.385Z"
-2,"maria.petrova@example.com","Мария Петрова","Все очень понравилось!","uploads/feedback/file2.jpg","2025-04-04T13:36:39.385Z","2025-04-04T13:36:39.385Z"
-3,"alexey.smirnov@example.com","Алексей Смирнов","Рекомендую всем!","uploads/feedback/file2.jpg","2025-04-04T13:36:39.385Z","2025-04-04T13:36:39.385Z"

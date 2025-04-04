@@ -24,7 +24,7 @@ export default function AllWatchesCard() {
   const groupedWatches = groupWatches(watches);
 
   return (
-    <Carousel data-bs-theme="dark" style={{ height: '28em' }}>
+    <Carousel data-bs-theme="dark" style={{ minHeight: '20%' }}>
       {groupedWatches.map((group, index) => (
         <Carousel.Item key={index}>
           <div className="d-flex justify-content-around">

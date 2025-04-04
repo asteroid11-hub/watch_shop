@@ -13,24 +13,28 @@ export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
-    navigate('/admin');
+    setIsLoggedIn(true);
+    // navigate('/admin');
     console.log(res.data.user);
   };
   const loginHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/login', formData);
     if (res.status === 200) setUser(res.data.user);
-    navigate('/admin');
+    setIsLoggedIn(true);
+    // navigate('/admin');
     console.log(res.data.user);
     console.log(user);
   };
   const logoutHandler = async () => {
     await axiosInstance.delete('/auth/logout');
     setUser(null);
+    setIsLoggedIn(false);
+    // navigate('/');
   };
 
   const feedbackHandler = async (formData) => {

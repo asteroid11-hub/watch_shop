@@ -8,13 +8,12 @@ export default function MainPage({isLoggedIn, logoutHandler, feedbackHandler}) {
 
   return (
     <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+      <CarouselFadeExample isLoggedIn={isLoggedIn}/>
 
-      <CarouselFadeExample />
       <div id="allWatchesCard">
         <AllWatchesCard />
       </div>
 
-      <CarouselFadeExample isLoggedIn={isLoggedIn}/>
 
       <div id="about">
         <About />

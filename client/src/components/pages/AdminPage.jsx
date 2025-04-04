@@ -39,9 +39,20 @@ const AdminPage = ({ user, setUser }) => {
 
   const handleDownloadCSV = async () => {
     try {
-      const res = await axiosInstance.get('/admin/getcsv', {
-        responseType: 'blob',
-      });
+      const res = await axiosInstance
+        .get('/admin/getcsv', {
+          responseType: 'blob',
+        })
+        .then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', '1feedback.csv');
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          window.URL.revokeObjectURL(url); // Free memory
+        });
       console.log(res);
     } catch (error) {
       console.log('Error downloading CSV:', error.message);

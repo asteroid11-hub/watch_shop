@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import axiosinstance from '../../../config/axiosInstance';
+import styles from './AddNewWatch.module.css';
+import { Link } from 'react-router';
 
 export default function AddNewWatch() {
   const addSubmitHandler = async (e) => {
@@ -53,10 +55,22 @@ export default function AddNewWatch() {
                   <Form.Control type="file" name="file" />
                 </Form.Group>
 
-                <div className="text-center">
-                  <Button variant="dark" className="w-40" type="submit">
-                    Добавить
-                  </Button>
+                <div className={styles.box}>
+                  <div
+                    className="text-center"
+                    style={{ display: 'flex', marginRight: '20px' }}
+                  >
+                    <Button variant="dark" className="w-40" type="submit">
+                      Добавить
+                    </Button>
+                  </div>
+                  <div className="text-center">
+                    <Link to="/">
+                      <Button variant="dark" className="w-40" type="submit">
+                        Закрыть
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </Form>
             </Card.Body>

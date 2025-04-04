@@ -5,24 +5,27 @@ import axiosInstance from '../../config/axiosInstance';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Button, Form } from 'react-bootstrap';
-import watchService from '../../services/WatchService';
+import marketingService from '../../services/MarketingService';
 import FormCarousel from './FormCarousel';
 
 function CarouselFadeExample({ isLoggedIn }) {
-  const [watches, setWatch] = useState([]);
+  const [marketings, setMarketing] = useState([]);
   const [isClickAdd, setClickAdd] = useState(false);
+  const [isClickEdit, setClickEdit] = useState(false);
+  const [isClickDelete, setClickDelete] = useState(false);
+  const [editingMarketing, setEditingMarketing] = useState(null);
 
   useEffect(() => {
-    watchService.getAllWatch().then((res) => setWatch(res));
+    marketingService.getAll().then((res) => setMarketing(res));
   }, []);
 
+  // const newWatch = {
+  //   model: 'Test model',
+  //   description: 'Test description',
+  //   image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
+  // };
 
-  const newWatch = {
-    model: 'Test model',
-    description: 'Test description',
-    image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
-  };
-
+  // console.log(watches)
 
 
 
@@ -36,28 +39,26 @@ function CarouselFadeExample({ isLoggedIn }) {
         position: 'relative',
       }}
     >
-      {watches.map((watch) => (
-        <Carousel.Item key={watch.id}>
-          <Link to={`/watch/${watch.id}`}>
-            <div
-              className="shadow-lg"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100%',
-                width: '100%',
-              }}
-            >
-              <img src={watch.image} style={{ height: '80vh' }} />
-            </div>
-            <Carousel.Caption>
-              <h1>Точность — язык совершенства</h1>
-              <h3>{watch.model}</h3>
-              <p>{watch.description}</p>
-            </Carousel.Caption>
-          </Link>
-          {isClickAdd && (
+      {marketings.map((marketing) => (
+        <Carousel.Item key={marketing.id}>
+          <div
+            className="shadow-lg"
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+              width: '100%',
+            }}
+          >
+            <img src={`${marketing.image}`} style={{ height: '80vh' }} />
+          </div>
+          <Carousel.Caption>
+            <h1>Точность — язык совершенства</h1>
+            <h3>{marketing.model}</h3>
+            <p>{marketing.description}</p>
+          </Carousel.Caption>
+          {(isClickAdd || isClickEdit) && (
             <div
               style={{
                 position: 'absolute',
@@ -73,7 +74,13 @@ function CarouselFadeExample({ isLoggedIn }) {
                 boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)',
               }}
             >
-              <FormCarousel />
+              <FormCarousel
+                marketings={marketings} 
+                setMarketing={setMarketing} 
+                setClickAdd={setClickAdd} 
+                setClickEdit={setClickEdit}
+                editingMarketing={isClickEdit ? editingMarketing : null}
+              />
             </div>
           )}
           {true && (
@@ -90,14 +97,25 @@ function CarouselFadeExample({ isLoggedIn }) {
               <Button
                 variant="light"
                 className="d-flex align-items-cente"
-                onClick={()=>setClickAdd(true)}
+                onClick={() => setClickAdd(true)}
               >
                 <i className="bi bi-plus-lg"></i>
               </Button>
-              <Button variant="light" className="d-flex align-items-cente">
+              <Button
+                variant="light"
+                className="d-flex align-items-cente"
+                onClick={() => {
+                  setEditingMarketing(marketing);
+                  setClickEdit(true);
+                }}
+              >
                 <i className="bi bi-pencil-square"></i>
               </Button>
-              <Button variant="light" className="d-flex align-items-cente">
+              <Button
+                variant="light"
+                className="d-flex align-items-cente"
+                onClick={() => setClickDelete(true)}
+              >
                 <i className="bi bi-trash"></i>
               </Button>
             </div>

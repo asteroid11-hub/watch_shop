@@ -3,11 +3,10 @@ import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
 import RegistrationPage from '../components/pages/RegistrationPage';
+import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';
-
-import AddNewWatch from '../components/ui/CardAddNewWatch/AddNewWatch';
 import AdminPage from '../components/pages/AdminPage';
 
 export default function RouterProvider() {
@@ -32,7 +31,6 @@ export default function RouterProvider() {
   const logoutHandler = async () => {
     await axiosInstance.delete('/auth/logout');
     setUser(null);
-    navigate('/login');
   };
 
   const feedbackHandler = async (formData) => {

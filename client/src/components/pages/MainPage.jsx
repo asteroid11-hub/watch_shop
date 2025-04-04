@@ -4,17 +4,16 @@ import About from '../ui/About';
 import Feedback from '../ui/Feedback';
 import AllWatchesCard from '../ui/CardAllWatch/AllWatchesCard';
 
-export default function MainPage({isLoggedIn,logoutHandler, feedbackHandler}) {
+export default function MainPage({isLoggedIn, logoutHandler, feedbackHandler}) {
 
   return (
     <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+      <CarouselFadeExample isLoggedIn={isLoggedIn}/>
 
-      <CarouselFadeExample />
       <div id="allWatchesCard">
         <AllWatchesCard />
       </div>
 
-      <CarouselFadeExample isLoggedIn={isLoggedIn}/>
 
       <div id="about">
         <About />

@@ -1,0 +1,4 @@
+"id","email","name","message","filePath","createdAt","updatedAt"
+1,"ivan.ivanov@example.com","Иван Иванов","Отличный сервис!","uploads/file1.jpg","2025-04-04T10:00:47.567Z","2025-04-04T10:00:47.567Z"
+2,"maria.petrova@example.com","Мария Петрова","Все очень понравилось!","uploads/file2.jpg","2025-04-04T10:00:47.567Z","2025-04-04T10:00:47.567Z"
+3,"alexey.smirnov@example.com","Алексей Смирнов","Рекомендую всем!","uploads/file2.jpg","2025-04-04T10:00:47.567Z","2025-04-04T10:00:47.567Z"

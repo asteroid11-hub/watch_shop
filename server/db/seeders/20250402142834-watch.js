@@ -21,7 +21,7 @@ module.exports = {
         email: 'ivan.ivanov@example.com',
         name: 'Иван Иванов',
         message: 'Отличный сервис!',
-        filePath: 'uploads/file1.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file1.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -29,7 +29,7 @@ module.exports = {
         email: 'maria.petrova@example.com',
         name: 'Мария Петрова',
         message: 'Все очень понравилось!',
-        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file2.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -37,7 +37,7 @@ module.exports = {
         email: 'alexey.smirnov@example.com',
         name: 'Алексей Смирнов',
         message: 'Рекомендую всем!',
-        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file2.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },

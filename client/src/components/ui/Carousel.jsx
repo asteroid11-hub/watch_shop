@@ -27,13 +27,10 @@ function CarouselFadeExample({ isLoggedIn }) {
 
   // console.log(watches)
 
-
-
-
-
   return (
     <Carousel
-      fade
+      {...(!isClickEdit && { fade: true })}
+      {...(!isClickAdd && { fade: true })}
       style={{
         height: '90vh',
         position: 'relative',
@@ -75,15 +72,15 @@ function CarouselFadeExample({ isLoggedIn }) {
               }}
             >
               <FormCarousel
-                marketings={marketings} 
-                setMarketing={setMarketing} 
-                setClickAdd={setClickAdd} 
+                marketings={marketings}
+                setMarketing={setMarketing}
+                setClickAdd={setClickAdd}
                 setClickEdit={setClickEdit}
                 editingMarketing={isClickEdit ? editingMarketing : null}
               />
             </div>
           )}
-          {true && (
+          {isLoggedIn && (
             <div
               style={{
                 position: 'absolute',

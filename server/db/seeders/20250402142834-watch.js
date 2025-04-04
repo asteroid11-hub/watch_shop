@@ -47,48 +47,42 @@ module.exports = {
       {
         model: 'Rolex Submariner',
         description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: '1743682805251-wallhaven-nm66rk.jpg',
+        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
       },
       {
         model: 'Omega Seamaster',
         description: 'Стильные и надежные часы для активного отдыха.',
-        image: '123-wallhaven.jpg',
+        image: '/uploads/watch/123-wallhaven.jpg',
       },
       {
         model: 'Patek Philippe Nautilus',
         description:
           'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
         image:
-          'patex_philippe.jpg',
+          '/uploads/watch/patex_philippe.jpg',
       },
       {
         model: 'Audemars Piguet Royal Oak',
         description: 'Классические часы с уникальным восьмиугольным безелем.',
         image:
-          'Lookbook_video_code_v2.mp4',
+          '/uploads/watch/Lookbook_video_code_v2.mp4',
       },
       {
         model: 'Rolex Submariner',
         description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: '1743682805251-wallhaven-nm66rk.jpg',
+        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
       },
       {
         model: 'Omega Seamaster',
         description: 'Стильные и надежные часы для активного отдыха.',
-        image: '123-wallhaven.jpg',
+        image: '/uploads/watch/123-wallhaven.jpg',
       },
       {
         model: 'Patek Philippe Nautilus',
         description:
           'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
         image:
-          'patex_philippe.jpg',
-      },
-      {
-        model: 'Audemars Piguet Royal Oak',
-        description: 'Классические часы с уникальным восьмиугольным безелем.',
-        image:
-          'Lookbook_video_code_v2.mp4',
+          '/uploads/watch/patex_philippe.jpg',
       },
     ]);
   },

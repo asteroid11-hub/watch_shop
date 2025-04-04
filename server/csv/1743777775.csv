@@ -1,0 +1,6 @@
+"id","email","name","message","filePath","createdAt","updatedAt"
+1,"ivan.ivanov@example.com","Иван Иванов","Отличный сервис!","uploads/feedback/file1.jpg","2025-04-04T14:05:39.283Z","2025-04-04T14:05:39.283Z"
+2,"maria.petrova@example.com","Мария Петрова","Все очень понравилось!","uploads/feedback/file2.jpg","2025-04-04T14:05:39.283Z","2025-04-04T14:05:39.283Z"
+3,"alexey.smirnov@example.com","Алексей Смирнов","Рекомендую всем!","uploads/feedback/file2.jpg","2025-04-04T14:05:39.283Z","2025-04-04T14:05:39.283Z"
+4,"helgafrost1999@mail.ru","helga","Крутота","/uploads/feedback/1743777061523-file1.jpg","2025-04-04T14:31:01.524Z","2025-04-04T14:31:01.524Z"
+5,"helgafrost1999@mail.ru","Ольга","Все круто!","/uploads/feedback/1743777722367-file3.jpg","2025-04-04T14:42:02.368Z","2025-04-04T14:42:02.368Z"

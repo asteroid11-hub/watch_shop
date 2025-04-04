@@ -66,9 +66,9 @@ export default function RouterProvider() {
   }, []);
 
   return (
-    <UserContext user={user}>
+    <UserContext value={{ user }}>
       <Routes>
-        <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} user={user} />}>
+        <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
           {/* Главная страница - отдельный маршрут */}
           <Route
             path="/"
@@ -120,4 +120,4 @@ export default function RouterProvider() {
       </Routes>
     </UserContext>
   );
-  
+}

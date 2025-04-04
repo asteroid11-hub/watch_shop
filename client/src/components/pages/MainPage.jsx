@@ -1,4 +1,3 @@
-import React from 'react';
 import CarouselFadeExample from '../ui/Carousel';
 import About from '../ui/About';
 import Feedback from '../ui/Feedback';

@@ -38,12 +38,15 @@ export default function AllWatchesCard({ isLoggedIn }) {
   const groupedWatches = groupWatches(watches);
 
   return (
-    <Carousel data-bs-theme="dark" style={{ minHeight: '20%' }}>
-      {groupedWatches.map((group, index) => (
-        <Carousel.Item key={index}>
+    <Carousel data-bs-theme="dark" style={{ height: '20em' }}>
+      {groupedWatches.map((group) => (
+        <Carousel.Item key={group.id}>
           <div className="d-flex justify-content-around">
             {group.map((watch) => (
-              <Card style={{ width: '18rem' }} className={styles.container}>
+              <Card key={watch.id}
+                style={{ width: '18rem', height: '20rem' }}
+                className={styles.container}
+              >
                 <Card.Img variant="top" src={watch.image} />
                 {isLoggedIn && (
                   <div className={styles.boxCRUD}>

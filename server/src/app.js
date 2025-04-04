@@ -1,5 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
+const jsxRender = require('./utils/jsxRender');
+
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
@@ -11,8 +12,12 @@ const adminRouter = require('./routes/adminRouter'); // Добавленный �
 
 const app = express();
 
+app.engine('js', jsxRender);
+app.set('view engine', 'js');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.json());
-app.use(morgan('dev'));
+
 app.use(cookieParser());
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

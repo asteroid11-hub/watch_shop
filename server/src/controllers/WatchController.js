@@ -23,6 +23,9 @@ class WatchController {
     try {
       const { id } = req.params;
       const oneWatch = await WatchService.getOneWatch(id);
+      if (Number.isNaN(Number(id)) || Number(id) < 1) {
+        res.status(400).json({ error: 'Некорректный ID' });
+      }
       if (!oneWatch) {
         res.status(404).json({ error: 'Часы не найдены' });
       }

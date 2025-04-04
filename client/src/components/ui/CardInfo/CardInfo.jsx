@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './CardInfo.module.css';
 import { Nav, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router';
@@ -26,12 +25,25 @@ export default function CardInfo({ watch }) {
             <Card.Body>
               <Card.Link
                 as={Link}
-                to="/"
+                to={`watch/${watch.id}`}
                 style={{
                   color: 'green',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease',
-                  marginRight: '15px',
+                  marginLeft: '20px',
+                  marginRight: '20px',
+                }}
+                className="hover_link"
+              >
+                Назад
+              </Card.Link>
+              <Card.Link
+                href="#contact"
+                style={{
+                  color: 'green',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  marginRight: '20px',
                 }}
                 className="hover-link"
               >

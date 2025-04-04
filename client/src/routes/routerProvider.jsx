@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router';
+import { Link, Navigate, Route, Routes, useNavigate } from 'react-router';
 import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
@@ -11,20 +11,44 @@ export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const navigate = useNavigate();
+
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
+    navigate('/admin');
     console.log(res.data.user);
   };
   const loginHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/login', formData);
     if (res.status === 200) setUser(res.data.user);
+    navigate('/admin');
     console.log(res.data.user);
     console.log(user);
   };
   const logoutHandler = async () => {
     await axiosInstance.delete('/auth/logout');
     setUser(null);
+  };
+
+  const feedbackHandler = async (formData) => {
+    const data = new FormData();
+    data.append('email', formData.email);
+    data.append('name', formData.name);
+    data.append('message', formData.message);
+    if (formData.file) {
+      data.append('file', formData.file);
+    }
+
+    try {
+      const response = await axiosInstance.post('/feedback', data);
+      if (response.status === 200) {
+        alert('Форма успешно отправлена!');
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert('Ошибка при отправке формы');
+    }
   };
 
   useEffect(() => {
@@ -36,19 +60,53 @@ export default function RouterProvider() {
         setIsLoggedIn(false);
         console.log(error.message);
       });
-    console.log(user);
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
+  }, []);
 
   return (
     <Routes>
-    <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>}>
-        <Route path="/" element={<MainPage isLoggedIn={isLoggedIn}/>}></Route>
-        <Route path="/watch/:id" element={<CardPage />}></Route>
-        <Route path="/login" element={<LoginPage loginHandler={loginHandler} />} />
+      <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
+        {/* Главная страница - отдельный маршрут */}
+        <Route
+          path="/"
+          element={<MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler} />}
+        />
+
+        {/* Остальные маршруты */}
+        <Route path="/watch/:id" element={<CardPage />} />
+        <Route path="/addwatch" element={<AddNewWatch />} />
+
+        {/* Авторизация */}
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/admin" />
+            ) : (
+              <LoginPage loginHandler={loginHandler} />
+            )
+          }
+        />
         <Route
           path="/register"
-          element={<RegistrationPage signupHandler={signupHandler} />}
+          element={
+            isLoggedIn ? (
+              <Navigate to="/admin" />
+            ) : (
+              <RegistrationPage signupHandler={signupHandler} />
+            )
+          }
+        />
+
+        {/* Админка */}
+        <Route
+          path="/admin"
+          element={
+            isLoggedIn ? (
+              <AdminPage user={user} setUser={setUser} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
       </Route>
     </Routes>

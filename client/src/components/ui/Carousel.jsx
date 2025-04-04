@@ -27,6 +27,10 @@ function CarouselFadeExample({ isLoggedIn }) {
 
   // console.log(watches)
 
+
+
+
+
   return (
     <Carousel
       fade

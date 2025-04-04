@@ -1,4 +1,4 @@
-const { Admin } = require('../../db/models');
+const { Admin, Feedback } = require('../../db/models');
 
 class AuthDbService {
   static async createUser(user) {
@@ -8,6 +8,19 @@ class AuthDbService {
     } catch (error) {
       console.error('Error creating user:', error);
       throw new Error('Failed to create user');
+    }
+  }
+
+  static async getAllFeedbacks() {
+    try {
+      const feedbacks = (await Feedback.findAll()).map((feedback) =>
+        feedback.get({ plain: true }),
+      );
+      
+      return feedbacks;
+    } catch (error) {
+      console.error('Error fetching feedbacks:', error);
+      throw new Error('Failed to fetch feedbacks');
     }
   }
 

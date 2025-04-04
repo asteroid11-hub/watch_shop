@@ -47,17 +47,42 @@ module.exports = {
       {
         model: 'Rolex Submariner',
         description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
-        image: 'https://w.wallhaven.cc/full/nm/wallhaven-nm66rk.jpg',
+        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
       },
       {
         model: 'Omega Seamaster',
         description: 'Стильные и надежные часы для активного отдыха.',
-        image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
+        image: '/uploads/watch/123-wallhaven.jpg',
       },
       {
-        model: 'Tag Heuer Carrera',
-        description: 'Спортивные часы с хронографом для гонщиков.',
-        image: 'https://w.wallhaven.cc/full/n6/wallhaven-n611e6.jpg',
+        model: 'Patek Philippe Nautilus',
+        description:
+          'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
+        image:
+          '/uploads/watch/patex_philippe.jpg',
+      },
+      {
+        model: 'Audemars Piguet Royal Oak',
+        description: 'Классические часы с уникальным восьмиугольным безелем.',
+        image:
+          '/uploads/watch/Lookbook_video_code_v2.mp4',
+      },
+      {
+        model: 'Rolex Submariner',
+        description: 'Часы для дайвинга с водонепроницаемостью до 300 метров.',
+        image: '/uploads/watch/1743682805251-wallhaven-nm66rk.jpg',
+      },
+      {
+        model: 'Omega Seamaster',
+        description: 'Стильные и надежные часы для активного отдыха.',
+        image: '/uploads/watch/123-wallhaven.jpg',
+      },
+      {
+        model: 'Patek Philippe Nautilus',
+        description:
+          'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
+        image:
+          '/uploads/watch/patex_philippe.jpg',
       },
     ]);
 

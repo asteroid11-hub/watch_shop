@@ -6,12 +6,15 @@ export default function AddNewWatch() {
   const addSubmitHandler = async (e) => {
     try {
       e.preventDefault();
-      const form = new FormData(e.target);
-      const formData = Object.fromEntries(form);
-      const res = axiosinstance.post('/watch/', formData);
+      const formData = new FormData(e.target);
+      const res = await axiosinstance.post('/watch', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       console.log('Данные успешно добавлены!', res.data);
     } catch (error) {
-      console.error(error);
+      console.error('Ошибка при добавлении данных:', error);
     }
   };
 
@@ -47,7 +50,7 @@ export default function AddNewWatch() {
 
                 <Form.Group className="mb-3" controlId="formFile">
                   <Form.Label>Прикрепить файл</Form.Label>
-                  <Form.Control type="file" name="name_of_file_input" />
+                  <Form.Control type="file" name="file" />
                 </Form.Group>
 
                 <div className="text-center">

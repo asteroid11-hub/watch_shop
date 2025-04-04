@@ -1,4 +1,4 @@
-import { Link, Navigate, Route, Routes, useNavigate } from 'react-router';
+import { Link, Navigate, Route, Routes } from 'react-router';
 import Layout from '../components/Layout';
 import MainPage from '../components/pages/MainPage';
 import LoginPage from '../components/pages/LoginPage';
@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '../config/axiosInstance';
 import CardPage from '../components/pages/CardPage';
 import AdminPage from '../components/pages/AdminPage';
+import EditWatch from '../components/ui/EditWatch/EditWatch';
+import { UserContext } from './UserContext';
 
 export default function RouterProvider() {
   const [user, setUser] = useState(null);
@@ -19,14 +21,12 @@ export default function RouterProvider() {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
     setIsLoggedIn(true);
-    // navigate('/admin');
     console.log(res.data.user);
   };
   const loginHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/login', formData);
     if (res.status === 200) setUser(res.data.user);
     setIsLoggedIn(true);
-    // navigate('/admin');
     console.log(res.data.user);
     console.log(user);
   };
@@ -34,7 +34,6 @@ export default function RouterProvider() {
     await axiosInstance.delete('/auth/logout');
     setUser(null);
     setIsLoggedIn(false);
-    // navigate('/');
   };
 
   const feedbackHandler = async (formData) => {
@@ -69,53 +68,58 @@ export default function RouterProvider() {
   }, []);
 
   return (
-    <Routes>
-      <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
-        {/* Главная страница - отдельный маршрут */}
-        <Route
-          path="/"
-          element={<MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler} />}
-        />
+    <UserContext>
+      <Routes>
+        <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
+          {/* Главная страница - отдельный маршрут */}
+          <Route
+            path="/"
+            element={
+              <MainPage isLoggedIn={isLoggedIn} feedbackHandler={feedbackHandler} />
+            }
+          />
 
-        {/* Остальные маршруты */}
-        <Route path="/watch/:id" element={<CardPage />} />
-        <Route path="/addwatch" element={<AddNewWatch />} />
-        <Route path="*" element={<Navigate to="/" />} />
+          {/* Остальные маршруты */}
+          <Route path="/watch/:id" element={<CardPage />} />
+          <Route path="/addwatch" element={<AddNewWatch />} />
+          <Route path="/editwatch" element={<EditWatch />} />
+          <Route path="*" element={<Navigate to="/" />} />
 
-        {/* Авторизация */}
-        <Route
-          path="/login"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/admin" />
-            ) : (
-              <LoginPage loginHandler={loginHandler} />
-            )
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/admin" />
-            ) : (
-              <RegistrationPage signupHandler={signupHandler} />
-            )
-          }
-        />
+          {/* Авторизация */}
+          <Route
+            path="/login"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/admin" />
+              ) : (
+                <LoginPage loginHandler={loginHandler} />
+              )
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/admin" />
+              ) : (
+                <RegistrationPage signupHandler={signupHandler} />
+              )
+            }
+          />
 
-        {/* Админка */}
-        <Route
-          path="/admin"
-          element={
-            isLoggedIn ? (
-              <AdminPage user={user} setUser={setUser} />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-      </Route>
-    </Routes>
+          {/* Админка */}
+          <Route
+            path="/admin"
+            element={
+              isLoggedIn ? (
+                <AdminPage user={user} setUser={setUser} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+        </Route>
+      </Routes>
+    </UserContext>
   );
 }

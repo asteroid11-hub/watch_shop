@@ -21,7 +21,7 @@ module.exports = {
         email: 'ivan.ivanov@example.com',
         name: 'Иван Иванов',
         message: 'Отличный сервис!',
-        filePath: 'uploads/file1.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file1.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -29,7 +29,7 @@ module.exports = {
         email: 'maria.petrova@example.com',
         name: 'Мария Петрова',
         message: 'Все очень понравилось!',
-        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file2.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -37,7 +37,7 @@ module.exports = {
         email: 'alexey.smirnov@example.com',
         name: 'Алексей Смирнов',
         message: 'Рекомендую всем!',
-        filePath: 'uploads/file2.jpg', // Пример пути к файлу
+        filePath: 'uploads/feedback/file2.jpg', // Пример пути к файлу
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -58,14 +58,12 @@ module.exports = {
         model: 'Patek Philippe Nautilus',
         description:
           'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
-        image:
-          '/uploads/watch/patex_philippe.jpg',
+        image: '/uploads/watch/patex_philippe.jpg',
       },
       {
         model: 'Audemars Piguet Royal Oak',
         description: 'Классические часы с уникальным восьмиугольным безелем.',
-        image:
-          '/uploads/watch/Lookbook_video_code_v2.mp4',
+        image: '/uploads/watch/Lookbook_video_code_v2.mp4',
       },
       {
         model: 'Rolex Submariner',
@@ -81,8 +79,7 @@ module.exports = {
         model: 'Patek Philippe Nautilus',
         description:
           'Элегантные часы с уникальным дизайном и высоким уровнем мастерства.',
-        image:
-          '/uploads/watch/patex_philippe.jpg',
+        image: '/uploads/watch/patex_philippe.jpg',
       },
     ]);
 

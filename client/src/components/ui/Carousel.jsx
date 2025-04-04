@@ -83,7 +83,7 @@ function CarouselFadeExample({ isLoggedIn }) {
               />
             </div>
           )}
-          {true && (
+          { isLoggedIn && (
             <div
               style={{
                 position: 'absolute',

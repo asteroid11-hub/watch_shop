@@ -76,6 +76,7 @@ export default function RouterProvider() {
         {/* Остальные маршруты */}
         <Route path="/watch/:id" element={<CardPage />} />
         <Route path="/addwatch" element={<AddNewWatch />} />
+        <Route path="*" element={<Navigate to="/" />} />
 
         {/* Авторизация */}
         <Route

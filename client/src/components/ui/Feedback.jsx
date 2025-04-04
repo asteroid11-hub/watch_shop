@@ -12,7 +12,7 @@ export default function Feedback({ feedbackHandler }) {
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     if (type === 'file') {
-      setFormData({ ...formData, file: e.target.files[0] });
+      setFormData({ ...formData, file: e.target.files[0] }); 
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -21,7 +21,7 @@ export default function Feedback({ feedbackHandler }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     feedbackHandler(formData);
-    setFormData({ email: '', name: '', message: '', file: null });
+    setFormData({ email: '', name: '', message: '', file: null }); 
   };
 
   return (
@@ -48,7 +48,7 @@ export default function Feedback({ feedbackHandler }) {
                 <Form.Group className="mb-3" controlId="formGroupName">
                   <Form.Label>Ф.И.О.</Form.Label>
                   <Form.Control
-                    type="name"
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -61,7 +61,6 @@ export default function Feedback({ feedbackHandler }) {
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    type="name"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
@@ -71,7 +70,11 @@ export default function Feedback({ feedbackHandler }) {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formFile">
                   <Form.Label>Прикрепить файл</Form.Label>
-                  <Form.Control type="file" name="file" onChange={handleChange} />
+                  <Form.Control
+                    type="file"
+                    name="file"
+                    onChange={handleChange} 
+                  />
                 </Form.Group>
                 <div className="text-center">
                   <Button variant="dark" type="submit" className="w-40">

@@ -1,17 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import NavBar from './ui/NavBar'
+import NavBar from './ui/NavBar';
 
-const Layout = ({isLoggedIn,logoutHandler}) => {
+const Layout = ({ isLoggedIn, logoutHandler }) => {
   return (
     <div className="layout">
       <header>
-       <NavBar isLoggedIn={isLoggedIn} logoutHandler={logoutHandler}/>
+        <NavBar isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />
       </header>
       <Outlet />
-      <footer>
-        <p>Footer</p>
-      </footer>
     </div>
   );
 };

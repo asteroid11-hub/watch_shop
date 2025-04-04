@@ -46,11 +46,11 @@ export default function FormCarousel({
   const aiQuestionHandler = async () => {
     try {
       const res = await axiosInstance.post('/admin/aidescription', {
-        prompt: `Мы компания уникальных дорогих часов, мне нужно сгенерировать для этой модели часов описание ${modelInput} вот тебе уточняющий промпт ${descriptionInput}`,
+        prompt: `Мы компания уникальных дорогих часов, мне нужно сгенерировать для этой модели часов короткое описание до 100 символов ${modelInput} вот тебе уточняющий промпт ${descriptionInput} ответ текстом без маркдауна без лишних комментариев`,
       });
       console.log(res.data);
 
-      setDescriptionInput(res.data);
+      setDescriptionInput(res.data.description);
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -93,7 +93,7 @@ export default function FormCarousel({
 
       <Stack direction="horizontal" gap={3}>
         <Button variant="dark" className="w-40 text-center p-2" type="submit">
-          {editingMarketing ? 'Обновить' : 'Отправить'}
+          {editingMarketing ? 'Обновить' : 'Отправить'} 
         </Button>
 
         <Button

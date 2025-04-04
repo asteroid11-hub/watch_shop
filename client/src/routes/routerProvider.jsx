@@ -15,8 +15,6 @@ export default function RouterProvider() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const navigate = useNavigate();
-
   const signupHandler = async (formData) => {
     const res = await axiosInstance.post('/auth/register', formData);
     if (res.status === 200) setUser(res.data.user);
@@ -68,9 +66,9 @@ export default function RouterProvider() {
   }, []);
 
   return (
-    <UserContext>
+    <UserContext user={user}>
       <Routes>
-        <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />}>
+        <Route element={<Layout isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} user={user} />}>
           {/* Главная страница - отдельный маршрут */}
           <Route
             path="/"
@@ -122,4 +120,4 @@ export default function RouterProvider() {
       </Routes>
     </UserContext>
   );
-}
+  

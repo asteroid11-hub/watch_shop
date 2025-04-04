@@ -3,8 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, Links } from 'react-router';
+import { UserContext } from '../../routes/UserContext';
 
-function NavBar({ isLoggedIn, logoutHandler }) {
+function NavBar({ isLoggedIn, logoutHandler, user }) {
   return (
     <Navbar expand="lg" bg="dark" variant="dark" className="py-3 shadow-sm">
       <Container>
@@ -18,6 +19,12 @@ function NavBar({ isLoggedIn, logoutHandler }) {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <Nav.Link
+              href="#about"
+              className="text-white mx-2 px-3 py-2 rounded hover-effect"
+            >
+              {user ? user.name : null}
+            </Nav.Link>
             <Nav.Link
               href="#about"
               className="text-white mx-2 px-3 py-2 rounded hover-effect"
